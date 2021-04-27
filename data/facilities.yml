@@ -1,0 +1,147 @@
+facilities:
+- name: 太田文化プラザ
+  category: 集会施設
+  business_hours: 8:00-21:00
+  deadline: -3days
+  closed: 5/1-11/31,12/31,1/1
+  note: 改修工事のため5月〜11月までご利用できません
+  windows:
+  - name: 太田文化プラザ
+    tel: 0187-88-1118
+    management: 大仙市シルバー人材センター
+- name: 太田生活改善センター
+  subname: 太田支所北側
+  category: 集会施設
+  business_hours: 9:00-21:00
+  reservation_hours: 9:00-20:00
+  deadline: -3days
+  closed: 12/29-1/4,mon
+  windows:
+  - name: 太田生活改善センター
+    tel: 0187-86-9460
+    management: 太田スポーツクラブ
+- name: 北部地区多目的センター
+  subname: 北部センター
+  category: 集会施設
+  business_hours: 9:00-21:00
+  deadline: -3days
+  closed: 12/31-1/1,mon
+  windows:
+  - name: 北部地区多目的センター
+    tel: 0187-88-1528
+    management: 上堰集落
+- name: 東部地区生活改善センター
+  subname: 東部センター
+  category: 集会施設
+  business_hours: 9:00-21:00
+  deadline: -3days
+  closed: 12/31-1/1,mon
+  windows:
+  - name: 太田公民館
+    tel: 0187-88-1119
+    management: 築地古舘部落会
+- name: 敬愛館
+  category: 集会施設
+  business_hours: 9:00-21:00
+  reservation_hours: 9:00-10:00
+  deadline: -3days
+  closed: 12/31-1/3,tue
+  windows:
+  - name: 敬愛館
+    tel: 0187-86-9220
+    management: 東今泉部落
+- name: おおたコミュニティプラザ
+  subname: "旧 太田保険センター"
+  category: 集会施設
+  business_hours: 9:00-21:00
+  deadline: -3days
+  windows:
+  - name: "太田支所 市民サービス課"
+    tel: 0187-88-1111
+  - name: "社会福祉協議会 太田支所"
+    tel: 0187-88-2940
+    management: "社会福祉協議会 太田支所"
+- name: 太田体育館
+  category: スポーツ施設
+  business_hours: 9:00-21:00
+  deadline: 14th - 20th
+  closed: 12/31-1/1,mon
+  windows:
+  - name: 太田体育館
+    tel: 0187-88-1350
+    management: 大曲スポーツセンター
+  note: 予約は、利用日前月の14日〜20日に電話または直接予約してください。
+- name: 太田体育館クラブハウス
+  category: スポーツ施設
+  business_hours: 9:00-21:00
+  deadline: 14th - 20th
+  closed: 12/31-1/3
+  windows:
+  - name: 太田体育館
+    tel: 0187-88-1350
+    management: 大曲スポーツセンター
+  note: 予約は、利用日前月の14日〜20日に電話または直接予約してください。
+- name: 交流プラザ
+  subname: 室内練習場
+  category: スポーツ施設
+  business_hours: 9:00-21:00,mon-12/1-3/31
+  deadline: 14th - 20th
+  closed: 12/31-1/3,mon
+  windows:
+  - name: 太田体育館
+    tel: 0187-88-1350
+    management: 大曲スポーツセンター
+  note: 予約は、利用日前月の14日〜20日に電話または直接予約してください。
+- name: 太田球場
+  subname: サブグラウンド含む
+  category: スポーツ施設
+  business_hours: 9:00-21:00
+  deadline: 14th - 20th
+  closed: 12/1-3/31
+  windows:
+  - name: 太田体育館
+    tel: 0187-88-1350
+    management: 大曲スポーツセンター
+  note: 予約は、利用日前月の14日〜20日に電話または直接予約してください。
+- name: 太田テニスコート
+  category: スポーツ施設
+  business_hours: 9:00-21:00
+  deadline: 14th - 20th
+  closed: 12/1-3/31
+  windows:
+  - name: 太田体育館
+    tel: 0187-88-1350
+    management: 大曲スポーツセンター
+  note: 予約は、利用日前月の14日〜20日に電話または直接予約してください。
+- name: 新興緑地広場
+  subname: サッカー場
+  category: スポーツ施設
+  business_hours: 9:00-21:00
+  deadline: 14th - 20th
+  closed: 12/1-3/31
+  windows:
+  - name: 太田体育館
+    tel: 0187-88-1350
+    management: 大曲スポーツセンター
+  note: 予約は、利用日前月の14日〜20日に電話または直接予約してください。
+- name: 多目的広場
+  subname: ゲートボール場
+  category: スポーツ施設
+  business_hours: 9:00-17:00
+  deadline: 14th - 20th
+  closed: 12/1-3/31
+  windows:
+  - name: 太田体育館
+    tel: 0187-88-1350
+    management: 大曲スポーツセンター
+  note: 予約は、利用日前月の14日〜20日に電話または直接予約してください。
+- name: 太田トレーニングセンター
+  category: スポーツ施設
+  business_hours: 9:00-21:00
+  deadline: 14th - 20th
+  closed: 12/31-1/3,mon
+  windows:
+  - name: 太田体育館
+    tel: 0187-88-1350
+    management: 大曲スポーツセンター
+  note: 予約は、利用日前月の14日〜20日に電話または直接予約してください。

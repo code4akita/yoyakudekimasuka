@@ -1,0 +1,10 @@
+.card
+  - bg_t = facility.reservable_time? ? "bg-primary text-white" : "bg-normal"
+  div class="card-header #{bg_t}"
+    - if facility.reservable_time?
+      a href="/facilities/#{facility.name}" class="btn btn-primary w-100"
+        = facility.name
+    - else
+      a href="/facilities/#{facility.name}" class="btn btn-normal w-100"
+        = facility.name
+

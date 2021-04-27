@@ -1,0 +1,7 @@
+.row
+  h1 施設問合せ
+
+.row.row-cols-1.row-cols-md-4.g-2
+  - @facilities.each do |f|
+    .col
+      == slim :_facility_card, locals:{ facility: f}

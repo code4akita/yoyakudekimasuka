@@ -1,0 +1,70 @@
+h1= @facility.name
+.row
+  - @facility["windows"].each do |w|
+    .col-md-4.col-sm-12
+      - if @facility.reservable_time?
+        a href="tel:#{w['tel']}" class="btn btn-primary w-100" #{w.name}に電話する
+      - else 
+        a href="tel:#{w['tel']}" class="btn btn-secondary w-100 text-wrap" #{w.name}に電話する　(ただいま時間外です)
+
+br
+
+h5
+  | 予約受付可能日
+.row
+  .table-responsible
+    table.table.table-bordered.text-center
+      thead.bg-warning
+        tr
+          td colspan="7"
+            .row
+              .col-md-2.col-sm-4.text-start
+                - today = Date.today
+                - if Date.new(today.year, today.month, 1) <= @date - 1
+                  .card
+                    - prev_month = @from_at - 1
+                    a href="/facilities/#{@facility.name}/#{prev_month.year}/#{prev_month.month}" class="btn btn-normal w-100" < 前月
+              .col.text-center 
+                h3 #{@date.month}月
+              .col-md-2.col-sm-4.text-end
+                .card
+                  - next_month = @end_at + 1
+                  a href="/facilities/#{@facility.name}/#{next_month.year}/#{next_month.month}" class="btn btn-normal w-100" 次月 >
+        tr
+          - %w(日 月 火 水 木 金 土).each do |w|
+            th= w
+      tbody
+        - (@from_at..@end_at).to_a.each_slice(7) do |w|
+          tr
+            - w.each do |d|
+              - bg = @facility.reservable?(d) ? "bg-primary" : "bg-light bg-gradient"
+              - fc = @facility.reservable?(d) ? "text-white" : @date.month == d.month ? "text-black" : "text-muted"
+              td class="#{bg}"
+                div class="#{fc}"
+                  = d.day
+
+
+.row
+  ul
+    li 予約可能な日を表示しているだけで、空きがあるかどうかは施設に問い合わせてください。
+    li 定休日が祝祭日の場合の振替には対応していませんので施設に問い合わせてください。
+    - if @facility.note
+      li= @facility.note 
+
+br
+
+.row
+  .col-md-2.co-sm-4.text-md-end
+    | 予約受付時間
+  .col-md-2.col-sm-4
+    = @facility.reservation_hours || @facility.business_hours
+.row
+  .col-md-2.co-sm-4.text-md-end
+    | 営業時間
+  .col-md-2.col-sm-4
+    = @facility.business_hours
+.row
+  .col-md-2.co-sm-4.text-md-end
+    | 休業日
+  .col-md-2.col-sm-4
+    = @facility.readable_closed_days
