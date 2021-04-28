@@ -30,6 +30,14 @@ class Facility < ProxyObject
     end
     y = time.year; m = time.month; d = time.day
     f = Time.new y, m, d, @reservation_hours[0], @reservation_hours[1]
+
+    # @reservable_periodを先に確定させる為の呼び出し
+    reservable? unless @reservable_period
+    # 正の値の場合は直接日付を指定している
+    if @reservable_period[0] > 0
+      return false unless (@reservable_period[0]..@reservable_period[1]).include?(time.day)
+    end
+
     t = Time.new y, m, d, @reservation_hours[2], @reservation_hours[3]
     (f..t).include? time
   end
