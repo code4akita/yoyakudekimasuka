@@ -56,7 +56,7 @@ get '/facilities/:name' do
 end
 
 get '/about' do
-  slim :about_us
+  slim :about
 end
 
 
