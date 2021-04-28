@@ -1,16 +1,25 @@
+- @title = @facility.name
+
 h1= @facility.name
 .row
   - @facility["windows"].each do |w|
     .col-md-4.col-sm-12
       - if @facility.reservable_time?
-        a href="tel:#{w['tel']}" class="btn btn-primary w-100" #{w.name}に電話する
+        button href="tel:#{w['tel']}" class="btn btn-primary w-100" #{w.name}に電話する
       - else 
-        a href="tel:#{w['tel']}" class="btn btn-secondary w-100 text-wrap" #{w.name}に電話する　(ただいま時間外です)
+        button href="tel:#{w['tel']}" class="btn btn-secondary w-100 text-wrap"
+          | #{w.name}に電話する
+          br
+          | (ただいま時間外です)
 
 br
 
 h5
   | 予約受付可能日
+p
+  span.badge.bg-primary 青色
+  | で表示されている日の予約が可能です。(注: 空きがあるか問合せ願います)
+
 .row
   .table-responsible
     table.table.table-bordered.text-center
@@ -55,16 +64,22 @@ br
 
 .row
   .col-md-2.co-sm-4.text-md-end
-    | 予約受付時間
-  .col-md-2.col-sm-4
+    b 予約受付時間
+  .col-md-2.col-sm-4.ps-4
     = @facility.reservation_hours || @facility.business_hours
+- if @facility.note
+  .row
+    .col-md-2.co-sm-4.text-md-end
+      b 予約について
+    .col-md-2.col-sm-4.ps-4
+      = @facility.note
 .row
   .col-md-2.co-sm-4.text-md-end
-    | 営業時間
-  .col-md-2.col-sm-4
+    b 営業時間
+  .col-md-2.col-sm-4.ps-4
     = @facility.business_hours
 .row
   .col-md-2.co-sm-4.text-md-end
-    | 休業日
-  .col-md-2.col-sm-4
+    b 休業日
+  .col-md-2.col-sm-4.ps-4
     = @facility.readable_closed_days

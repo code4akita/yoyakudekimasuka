@@ -1,0 +1,14 @@
+nav aria-label="breadcrumb" 
+  ol.breadcrumb
+    li.breadcrumb-item
+      a href="/"  施設一覧
+
+    - case File.basename(request.path_info)
+    - when "/", "", nil
+    - when "about"
+      li.breadcrumb-item
+        a href=="#{request.path_info}"  このサイトについて
+    - else
+      li.breadcrumb-item
+        a href="#{request.path_info}"  #{params['name']}
+

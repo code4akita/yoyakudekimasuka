@@ -10,6 +10,8 @@ require 'sinatra/reloader' if development?
 require "facility"
 require 'ostruct'
 
+set :static_cache_control, [:public, max_age: 60 * 60 * 24 * 365]
+
 DATA_DIR = File.join(settings.root, 'data')
 
 class App < Sinatra::Base
@@ -39,11 +41,9 @@ def facility name, year=nil, month=nil
   beginning_of_month = Date.new(@year, @month, 1)
   @date = beginning_of_month
   @from_at = beginning_of_month - beginning_of_month.wday
-p [@year, @month]
   end_of_month = Date.new(@year + @month / 12, (@month % 12) + 1, 1) - 1
   @end_at = end_of_month + (7 - 1) - end_of_month.wday
   @facility = facilities.find{|f| f.name == name}
-p [@date, @from_at, @end_at, @facility]
   slim :facilities
 end
 
@@ -54,4 +54,9 @@ end
 get '/facilities/:name' do
   facility params["name"]
 end
+
+get '/about' do
+  slim :about_us
+end
+
 

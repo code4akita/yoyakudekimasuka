@@ -6,10 +6,11 @@ html lang="ja"
     meta content="width=device-width, initial-scale=1" name="viewport" /
     /! Bootstrap CSS
     link crossorigin="anonymous" href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" rel="stylesheet" /
-    title= @title || '施設利用'
+    title= [@title, '利用予約できますか？'].select{|e| e}.join(": ")
   body
+    == slim :_navbar
     .container
-      == slim :_navbar
+      == slim :_breadcrumb
       == yield
 
     /! Optional JavaScript; choose one of the two!
