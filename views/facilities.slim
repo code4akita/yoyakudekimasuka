@@ -5,9 +5,9 @@ h1= @facility.name
   - @facility["windows"].each do |w|
     .col-md-4.col-sm-12
       - if @facility.reservable_time?
-        button href="tel:#{w['tel']}" class="btn btn-primary w-100" #{w.name}に電話する
+        a href="tel:#{w['tel']}" class="btn btn-primary w-100" #{w.name}に電話する
       - else 
-        button href="tel:#{w['tel']}" class="btn btn-secondary w-100 text-wrap"
+        a href="tel:#{w['tel']}" class="btn btn-secondary w-100 text-wrap"
           | #{w.name}に電話する
           br
           | (ただいま予約時間外です)
