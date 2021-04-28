@@ -1,6 +1,5 @@
 # app.rb
 $: << File.join(settings.root, 'models')
-p $:
 
 require 'dotenv'
 Dotenv.load
