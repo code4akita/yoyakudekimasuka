@@ -2,6 +2,9 @@
 $: << File.join(settings.root, 'models')
 p $:
 
+require 'dotenv'
+Dotenv.load
+
 require 'sinatra'
 require 'slim'
 require 'yaml'
