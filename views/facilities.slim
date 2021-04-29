@@ -10,15 +10,15 @@ h1= @facility.name
         a href="tel:#{w['tel']}" class="btn btn-secondary w-100 text-wrap"
           | #{w.name}に電話する
           br
-          | (ただいま予約時間外です)
+          | (ただいま予約問合せ時間外です)
 
 br
 
 h5
-  | 予約受付可能日
+  | 予約問合せ可能日
 p
   span.badge.bg-primary 青色
-  | で表示されている日の予約が可能です。(注: 空きがあるか問合せ願います)
+  | で表示されている日の予約問合せが可能です。(注: 空きがあるか問合せ願います)
 
 .row
   .table-responsible
@@ -49,13 +49,13 @@ p
               - bg = @facility.reservable?(d) ? "bg-primary" : "bg-light bg-gradient"
               - fc = @facility.reservable?(d) ? "text-white" : @date.month == d.month ? "text-black" : "text-muted"
               td class="#{bg}"
-                div class="#{fc}"
-                  = d.day
+                button class="btn btn-white #{fc}" data-placement="top" data-toggle="tooltip" title=("#{@facility.description_for(d)}") #{d.day}
+
 
 
 .row
   ul
-    li 予約可能な日を表示しているだけで、空きがあるかどうかは施設に問い合わせてください。
+    li 予約問合せ可能な日を表示しているだけで、空きがあるかどうかは施設に問い合わせてください。
     li 定休日が祝祭日の場合の振替には対応していませんので施設に問い合わせてください。
     - if @facility.note
       li= @facility.note 
@@ -64,7 +64,7 @@ br
 
 .row
   .col-md-2.co-sm-4.text-md-end
-    b 予約受付時間
+    b 予約問合せ時間
   .col-md-2.col-sm-4.ps-4
     = @facility.reservation_hours || @facility.business_hours
 - if @facility.note

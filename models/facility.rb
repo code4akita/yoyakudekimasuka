@@ -108,16 +108,9 @@ class Facility < ProxyObject
 
     case @reservable_period.size
     when 1
-      today < (day + @reservable_period[0])
+      today <= end_on_for(day)
     when 2
-      if @reservable_period[0] > 0
-        # 前月の指定期間のみ可能
-        ((day.year * 12 + day.month - 1) - (today.year * 12 + today.month - 1) == 1) &&
-          (@reservable_period[0]..@reservable_period[1]).include?(today.day)
-      else
-        # 利用日から指定期間前に可能
-        ((day + @reservable_period[0])..(day + @reservable_period[1])).include?(today)
-      end
+      (start_on_for(day)..end_on_for(day)).include?(today)
     end
   end
 
@@ -127,6 +120,69 @@ class Facility < ProxyObject
       s = s.gsub(pair.first, pair.last)
     end
     s
+  end
+
+  def description_for day=Date.today
+    return "休日のため利用できません。" if day_off?(day)
+    return "予約問い合わせ可能です。" if reservable?(day)
+      
+    sd = start_on_for(day)
+    ed = end_on_for(day)
+    if ed < Date.today
+      "受付は終了しました。"
+    else
+      if sd
+        "#{sd.month}月#{sd.day}日から#{ed.month}月#{ed.day}まで受付ます。"
+      else
+        "#{ed.month}月#{ed.day}日で受付終了します。"
+      end
+    end
+  end
+
+  private
+
+  def start_on_for day
+    raise "@reservable_period is nil" if @reservable_period.nil?
+
+    case @reservable_period.size
+    when 1
+      nil
+    when 2
+      if @reservable_period[0] > 0
+        # 前月の指定期間のみ可能
+        case day.month
+        when 1
+          return Date.new(day.year - 1, 12, @reservable_period[0])
+        else
+          return Date.new(day.year, day.month - 1, @reservable_period[0])
+        end
+      else
+        return day + @reservable_period[0]
+      end
+    end
+    nil
+  end
+
+  def end_on_for day
+    raise "@reservable_period is nil" if @reservable_period.nil?
+
+    case @reservable_period.size
+    when 1
+      return day + @reservable_period[0]
+    when 2
+      if @reservable_period[0] > 0
+        # 前月の指定期間のみ可能
+        case day.month
+        when 1
+          return Date.new(day.year - 1, 12, @reservable_period[1])
+        else
+          return Date.new(day.year, day.month - 1, @reservable_period[1])
+        end
+      else
+        return day + @reservable_period[1]
+      end
+    end
+    nil
   end
 
 end
